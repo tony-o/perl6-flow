@@ -13,4 +13,5 @@ install:
     - eval "$($HOME/brew/bin/rakudobrew init -)"
     - perl6 -v
 script:
+    - ls /home/travis/brew/moar-nom/install/share/perl6/sources/C7*
     - prove -e 'perl6 -Ilib' t/
