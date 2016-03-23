@@ -1,5 +1,5 @@
 use Flow::Config;
-use Flow::Plugins::Tap;
+use Flow::Plugins::TAP;
 
 our $*CONFIG = FLOW-CONFIG;
 
