@@ -12,6 +12,7 @@ $x.wait;
 
 '---------------'.say;
 my $result = $x.results[0]<data>;
+$x.perl.say;
 $result.perl.say;
 
 ok $result.passed == 2 && $result.failed == 0, 'TAP: 2 passed, 0 failed';

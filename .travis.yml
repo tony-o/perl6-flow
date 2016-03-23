@@ -30,4 +30,5 @@ install:
 
 script:
     # test install from local path
+    - perl6 -Ilib t/02-test.t
     - prove -e 'perl6 -Ilib' t/
