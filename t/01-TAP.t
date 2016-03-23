@@ -1,11 +1,11 @@
-use Kangaroo::Plugins::TAP;
+use Flow::Plugins::TAP;
 
 use Test;
 
 plan 5;
 
 {
-  my Kangaroo::Plugins::TAP $parser .=new;
+  my Flow::Plugins::TAP $parser .=new;
   $parser.parse(q<1..2
 ok 5 -
 not ok 6 - 
@@ -14,7 +14,7 @@ not ok 6 -
 }
 
 {
-  my Kangaroo::Plugins::TAP $parser .=new;
+  my Flow::Plugins::TAP $parser .=new;
   $parser.parse(q<ok 5 -
 not ok 6 -
 1..2>);
@@ -22,7 +22,7 @@ not ok 6 -
 }
 
 {
-  my Kangaroo::Plugins::TAP $parser .=new;
+  my Flow::Plugins::TAP $parser .=new;
   $parser.parse(q<ok 5 -
 not ok 6 -
 not ok 3
@@ -31,7 +31,7 @@ not ok 3
 }
 
 {
-  my Kangaroo::Plugins::TAP $parser .=new;
+  my Flow::Plugins::TAP $parser .=new;
   $parser.parse(q<1..3
 ok 5 -
 not ok 6 -
@@ -41,7 +41,7 @@ not ok 4>);
 }
 
 {
-  my Kangaroo::Plugins::TAP $parser .=new;
+  my Flow::Plugins::TAP $parser .=new;
   $parser.parse(q<1..1
 not ok 1 - not okay but todo # TODO 'mountain mama'>);
   ok $parser.planned == 1 && $parser.passed == 1 && $parser.failed == 0 && $parser.problems.elems == 0, '1 plan, 1 not-ok but #TODO\'d';

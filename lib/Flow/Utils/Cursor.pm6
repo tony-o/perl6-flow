@@ -1,4 +1,4 @@
-unit module Kangaroo::Utils::Cursor;
+unit module Flow::Utils::Cursor;
 
 $_ = qx[stty -a </dev/tty 2>&1];
 my $rows = +m/'rows '    <(\d+)>/;

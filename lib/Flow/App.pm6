@@ -1,10 +1,10 @@
-use Kangaroo::Config;
-use Kangaroo::Plugins::Tap;
+use Flow::Config;
+use Flow::Plugins::Tap;
 
-our $*CONFIG = KANGAROO-CONFIG;
+our $*CONFIG = FLOW-CONFIG;
 
-class Kangaroo::App {
-  has Kangaroo::Roles::output-parser $.output-parser;
+class Flow::App {
+  has Flow::Roles::output-parser $.output-parser;
   has Channel                        $!result-receiver;
   has Supplier                       $!result-supplier;
   has Supply                         $!result-supply;
@@ -12,7 +12,7 @@ class Kangaroo::App {
   has @.results;
   has @!ongoing;
 
-  submethod BUILD (:$!output-parser = ::('Kangaroo::Plugins::TAP')) {
+  submethod BUILD (:$!output-parser = ::('Flow::Plugins::TAP')) {
     $!result-supplier .=new;
     $!result-supply = $!result-supplier.Supply;
     self!results;

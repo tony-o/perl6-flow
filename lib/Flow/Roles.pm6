@@ -1,4 +1,4 @@
-unit module Kangaroo::Roles;
+unit module Flow::Roles;
 
 role output-parser is export {
   has Int $.passed  = 0;

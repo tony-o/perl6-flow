@@ -1,6 +1,6 @@
-use Kangaroo::Roles;
+use Flow::Roles;
 
-class Kangaroo::Plugins::TAP does Kangaroo::Roles::output-parser {
+class Flow::Plugins::TAP does Flow::Roles::output-parser {
   has $.template = "perl6 -Ilib \$FILE 2>&1";
   has $!hardfail = False;
 

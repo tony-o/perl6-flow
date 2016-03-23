@@ -1,9 +1,9 @@
-use Kangaroo::App;
+use Flow::App;
 use Test;
 
 plan 3;
 
-my Kangaroo::App $x .=new;
+my Flow::App $x .=new;
 
 $x.test-dir(qw<t/dir1 t/dir2 t/dir3>);
 

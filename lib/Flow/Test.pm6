@@ -1,4 +1,4 @@
-module Kangaroo::Test {
+module Flow::Test {
   my Int $pass  = 0;
   my Int $run   = 0;
   my Int $to-do = 0;

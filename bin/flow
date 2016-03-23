@@ -2,4 +2,4 @@
 
 use lib 'lib';
 
-use Kangaroo::Plugins::Interface;
+use Flow::Plugins::Interface;

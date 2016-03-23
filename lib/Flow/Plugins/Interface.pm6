@@ -1,5 +1,5 @@
-unit module Kangaroo::Plugins::Interface;
-use Kangaroo::App;
+unit module Flow::Plugins::Interface;
+use Flow::App;
 
 sub s-m($data, $len, :$ltr = True) {
   return $data.Str ~ (' ' x ($len - $data.Str.chars)) if     $ltr;
@@ -11,7 +11,7 @@ multi MAIN('test', :$depth = 1) is export {
 }
 
 multi MAIN('test', *@dirs, :$depth = 1) is export {
-  my $app = Kangaroo::App.new;
+  my $app = Flow::App.new;
 
   my $ending-out = '';
   my $index      = 0;
@@ -32,7 +32,7 @@ multi MAIN('test', *@dirs, :$depth = 1) is export {
   $app.test-dir(@dirs.map({ $_.IO.abspath }), :DIR-RECURSION($depth));
 
   $app.wait;
-  sleep .1;
   "\n$ending-out".say if $ending-out.trim ne '';
+#  sleep .1;
 }
 

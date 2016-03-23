@@ -28,7 +28,7 @@ my Int $index = 0;
 my @output;
 
 {
-  use Kangaroo::Test;# :DEFAULT;
+  use Flow::Test;# :DEFAULT;
 
   ok True, "true";
   ok False, "false";
