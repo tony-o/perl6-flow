@@ -5,7 +5,6 @@ perl:
 
 os:
     - linux
-    - osx
 
 env:
     - BACKEND=moar
@@ -22,8 +21,6 @@ before_install:
     - perl Configure.pl $VM_OPTS --gen-nqp --backends=$BACKEND
     - make install
     - export PATH=$HOME/rakudo/install/bin:$PATH
-    - export ZEF_PLUGIN_DEBUG=1
-    - export ZEF_BUILDPM_DEBUG=1
     - export PATH=$HOME/rakudo/install/share/perl6/site/bin:$PATH
     - cd $TRAVIS_BUILD_DIR
 
@@ -33,5 +30,4 @@ install:
 
 script:
     # test install from local path
-    - perl6 -Ilib bin/zef -v install .
-
+    - prove -e 'perl6 -Ilib' t/
