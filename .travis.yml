@@ -1,34 +1,17 @@
 language: perl
-
 perl:
-    - '5.20-shrplib'
-
-os:
-    - linux
-
+    - '5.20'
 env:
     - BACKEND=moar
-
 matrix:
     fast_finish: true
-
 sudo: false
-
 before_install:
-    - 'if [[ $BACKEND == "moar" ]]; then export VM_OPTS="--gen-moar"; fi'
-    - git clone https://github.com/rakudo/rakudo.git $HOME/rakudo
-    - cd $HOME/rakudo
-    - perl Configure.pl $VM_OPTS --gen-nqp --backends=$BACKEND
-    - make install
-    - export PATH=$HOME/rakudo/install/bin:$PATH
-    - export PATH=$HOME/rakudo/install/share/perl6/site/bin:$PATH
-    - cd $TRAVIS_BUILD_DIR
-
+    - git clone https://github.com/tony-o/perl6-travis-bin.git bins
+    - mv bins/brew ~/
+    - eval "$($HOME/brew/bin/rakudobrew init -)"
 install:
     # need at least 1 statement in 'install'
     - perl6 -v
-
 script:
-    # test install from local path
-    - perl6 -Ilib t/02-test.t
     - prove -e 'perl6 -Ilib' t/
