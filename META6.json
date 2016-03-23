@@ -1,0 +1,28 @@
+{
+  "name" : "kangaroo",
+  "support" : {
+    "bugtracker" : "https://github.com/tony-o/perl6-kangaroo/issues"
+  },
+  "perl" : "6.c",
+  "provides" : {
+    "Kangaroo": "lib/Kangaroo.pm6",
+    "Kangaroo::Plugins::Interface": "lib/Kangaroo/Plugins/Interface.pm6",
+    "Kangaroo::App": "lib/Kangaroo/App.pm6",
+    "Kangaroo::Config": "lib/Kangaroo/Config.pm6",
+    "Kangaroo::Roles": "lib/Kangaroo/Roles.pm6",
+    "Kangaroo::Test": "lib/Kangaroo/Test.pm6",
+    "Kangaroo::Utils::Cursor": "lib/Kangaroo/Utils/Cursor.pm6",
+    "Kangaroo::Plugins::TAP": "lib/Kangaroo/Plugins/TAP.pm6"
+  },
+  "depends": [ ],
+  "test-depends" : [
+    "Test"
+  ],
+  "description" : "a 'prove' replacement written entirely in the perl6 you know and love.",
+  "source-url"  : "git://github.com/tony-o/perl6-kangaroo.git",
+  "authors": [
+    "Tony O'Dell"
+  ],
+  "auth": "github:tony-o",
+  "version" : "v0.0.1"
+}

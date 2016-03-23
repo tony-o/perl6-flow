@@ -8,7 +8,7 @@ class Kangaroo::Plugins::TAP does Kangaroo::Roles::output-parser {
     my $last-seq = 0;
     my $failure = 0; # 0 = no plans, 1 = test after planned XOR test before planned, 2 = plan found between tests
     for $output.lines -> $lines {
-      $lines ~~ /^ [ $<fail>='not '? ] ** 0..1 'ok ' $<seq>=\d? ['-'] ** 0..1 $<text>=.*? [ '# TODO ' $<todo>=.* ] ** 0..1 $ /;
+      $lines ~~ /^ [ $<fail>='not '? ] ** 0..1 'ok ' $<seq>=\d* ['-'] ** 0..1 $<text>=.*? [ '# TODO ' $<todo>=.* ] ** 0..1 $ /;
       $.check($/, $last-seq) if $/;
       $failure++ if ($!passed + $!failed) > 0 && $!planned && $!planned == 0;
       if $lines ~~ /^ $<begin>=\d+ '..' $<end>=\d+ $/ {
