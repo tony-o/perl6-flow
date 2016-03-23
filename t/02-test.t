@@ -5,7 +5,7 @@ plan 3;
 
 my Flow::App $x .=new;
 
-$x.test-dir(qw<t/dir1 t/dir2 t/dir3>);
+$x.test-dir(qw<./t/dir1 ./t/dir2 ./t/dir3>);
 
 
 $x.wait;
