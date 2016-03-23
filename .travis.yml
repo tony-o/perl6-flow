@@ -13,5 +13,4 @@ install:
     - eval "$($HOME/brew/bin/rakudobrew init -)"
     - perl6 -v
 script:
-    - perl6 -e 'say { }.perl;'
     - prove -e 'perl6 -Ilib' t/
