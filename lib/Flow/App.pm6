@@ -73,6 +73,12 @@ class Flow::App {
   method !test-file(Str $file) {
     CATCH { default { .say; } }
     my $parser = $.output-parser.new;
+    $parser.supply.tap(-> $a {
+      $!result-receiver.send: %(
+        file => $file,
+        |$a
+      );
+    });
     $parser.run($file);
     $parser;
   }

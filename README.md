@@ -11,7 +11,46 @@ with `flow`, there isn't any need to translate your test files into TAP as long 
 
 `flow` ships with only parsing `TAP` output, there are other testing harnesses out there but they're not widely used if at all.
 
-`flow` is being released in the environment to try and help test the TAP output parsing and provide a speedier alternative to plain `prove` (`prove -j9` is faster on my system but isn't commonly run that way by package installers)
+`flow` is being released in the environment to try and help test the TAP output parsing and provide a speedier alternative to plain `prove` (`prove -j9` is faster on my system for modules with very few tests/scripts but `prove` isn't commonly run this way by package installers)
+
+#`flow` vs `prove`
+
+Here is the benchmark for `Bailador` module - chosen since it has a medium level of testing -
+
+###Script
+
+```perl6
+#!/usr/bin/env perl6
+
+use Bench;
+
+my $b = Bench.new;
+
+$b.cmpthese(500, {
+  prove  => sub {
+    qx<prove -j9 -e 'perl6 -Ilib' t/>;
+  },
+  flow   => sub {
+    qx<perl6 -I../../p6-flow/lib ../../p6-flow/bin/flow test>;
+  }
+});
+```
+
+###Benchmark
+
+```
+tonyo@mbp:~/projects/benchmark/Bailador$ ./prove-vs-flow.pl6
+Benchmark:
+Timing 500 iterations of flow, prove...
+      flow: 1728.3408 wallclock secs @ 0.2893/s (n=500)
+           prove: 3006.5033 wallclock secs @ 0.1663/s (n=500)
+           O-------O--------O-------O------O
+           |       | s/iter | prove | flow |
+           O=======O========O=======O======O
+           | prove | 6.01   | --    | -43% |
+           | flow  | 3.46   | 74%   | --   |
+           ---------------------------------
+```
 
 #what is being worked on now
 

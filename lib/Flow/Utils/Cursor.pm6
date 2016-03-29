@@ -1,8 +1,11 @@
 unit module Flow::Utils::Cursor;
 
 $_ = qx[stty -a </dev/tty 2>&1];
-my $rows = +m/'rows '    <(\d+)>/;
-my $cols = +m/'columns ' <(\d+)>/;
+
+$_.lines.join("\n").say;
+
+my $rows = +m/<(\d+)> ' rows'/;
+my $cols = +m/<(\d+)> ' columns'/;
 
 my %moves = 
   left  => 'tput cub1',
@@ -15,11 +18,11 @@ my %moves =
   br    => "tput cup $rows $cols";
 
 
-sub left is export { mv(%moves<left>); }
-sub right is export { mv(%moves<right>); }
-sub up is export { mv(%moves<up>); }
-sub down is export { mv(%moves<down>); }
-sub home is export { mv(%moves<home>); }
-sub tl is export { mv(%moves<tl>); }
-sub eol is export { mv(%moves<eol>); }
-sub br is export { mv(%moves<br>); }
+sub left is export { qqx[%moves<left>]; }
+sub right is export { qqx[%moves<right>]; }
+sub up is export { qqx[%moves<up>]; }
+sub down is export { qqx[%moves<down>]; }
+sub home is export { qqx[%moves<home>]; }
+sub tl is export { qqx[%moves<tl>]; }
+sub eol is export { qqx[%moves<eol>]; }
+sub br is export { qqx[%moves<br>]; }
