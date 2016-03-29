@@ -2,7 +2,6 @@ unit module Flow::Utils::Cursor;
 
 $_ = qx[stty -a </dev/tty 2>&1];
 
-$_.lines.join("\n").say;
 
 my $rows = +m/<(\d+)> ' rows'/;
 my $cols = +m/<(\d+)> ' columns'/;
