@@ -50,6 +50,7 @@ class Flow::App {
     } elsif $dir.IO.e {
       self.test-dir($dir.IO.dir, :DIR-RECURSION($DIR-RECURSION - 1));
     } else {
+      "{$dir.IO.abspath} {$dir.IO.e}".say;
       $!result-receiver.send: %(
         msg    => 'failure',
         reason => "$dir.IO.abspath not found",
