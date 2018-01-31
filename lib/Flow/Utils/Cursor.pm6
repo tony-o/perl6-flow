@@ -1,6 +1,6 @@
 unit module Flow::Utils::Cursor;
 
-my ($rows, $cols) = <lines cols>.map: { (run ‘tput’, $_, :out).out.slurp(:close).chomp };
+my ($rows, $cols) = <lines cols>.map: { (run 'tput', $_, :out).out.slurp(:close).Int };
 
 my %moves = 
   left  => 'tput cub1',
