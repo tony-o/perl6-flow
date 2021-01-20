@@ -4,6 +4,7 @@
     "bugtracker" : "https://github.com/tony-o/perl6-flow/issues"
   },
   "perl" : "6.c",
+  "license" : "WTFPL",
   "provides" : {
     "Flow": "lib/Flow.pm6",
     "Flow::Plugins::Interface": "lib/Flow/Plugins/Interface.pm6",
