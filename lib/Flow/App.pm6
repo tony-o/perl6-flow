@@ -33,7 +33,7 @@ class Flow::App {
     $!result-supply;
   }
 
-  method !perform-test(Str $dir, @extensions = ['t', 'pm6', 'pm'], :$DIR-RECURSION) {
+  method !perform-test(Str $dir, @extensions = ['rakutest', 't', 'rakumod', 'pm6', 'pm'], :$DIR-RECURSION) {
     return if $DIR-RECURSION < 0;
     if $dir.IO.e && $dir.IO.f && $dir.IO.absolute ~~ /'.' $<ext>=\w+? $/ {
       next unless $/<ext> eq any @extensions;
